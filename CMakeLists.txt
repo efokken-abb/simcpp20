@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.25)
 
 if(DEFINED PROJECT_NAME)
   set(MAIN_PROJECT OFF)
@@ -30,6 +30,12 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_link_options("-stdlib=libc++")
 endif()
 
+
+
+# for sanitizing in debug mode:
+set(MY_SANITIZE_OPTIONS -fsanitize=address -fno-omit-frame-pointer -fsanitize=undefined)
+add_compile_options("$<$<CONFIG:DEBUG>:${MY_SANITIZE_OPTIONS}>")
+add_link_options("$<$<CONFIG:DEBUG>:${MY_SANITIZE_OPTIONS}>")
 
 
 

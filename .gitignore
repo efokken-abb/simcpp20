@@ -2,5 +2,9 @@
 /.vscode
 /build
 /debug
+/debug_build
+/debug_clang
 /out
 /release
+/.cache
+/compile_commands.json
